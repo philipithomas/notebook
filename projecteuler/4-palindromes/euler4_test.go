@@ -7,7 +7,7 @@ import (
 func TestCorrectEulerAnswer(t *testing.T) {
 	result, err := calculate()
 	if err != nil {
-		t.Error("Error thrown by calcualte")
+		t.Error("Error thrown by calculate")
 	}
 
 	solution := 906609

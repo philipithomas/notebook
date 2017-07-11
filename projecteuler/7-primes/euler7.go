@@ -33,8 +33,7 @@ var (
 
 func primeNum(n int) int {
 	// Start with known 2 as prime
-	var i int
-	i = 2
+	i := 2
 	primes := []int{i}
 	for {
 		i++

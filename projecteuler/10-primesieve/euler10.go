@@ -56,7 +56,7 @@ func primeSum(lim int) (sum int64) {
 			if prime == lim {
 				return
 			}
-			if sieve[prime] == false {
+			if !sieve[prime] {
 				// found next prime
 				break
 			}

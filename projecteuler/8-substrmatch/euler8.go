@@ -59,7 +59,10 @@ func calculateAdjacent(digits int) (adjacentSum int64) {
 
 		var testSum = int64(1)
 		for j := 0; j < digits; j++ {
-			digit, _ := strconv.Atoi(string(needle[j]))
+			digit, err := strconv.Atoi(string(needle[j]))
+			if err != nil {
+				panic(err)
+			}
 			testSum = testSum * int64(digit)
 		}
 		if testSum > adjacentSum {
