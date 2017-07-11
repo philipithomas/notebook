@@ -1,0 +1,12 @@
+language: go
+sudo: false
+go:
+  - 1.7
+  - 1.8
+  - master
+before_install:
+  - go get -u github.com/alecthomas/gometalinter
+  - gometalinter --install
+script:
+  - gometalinter --enable=gofmt --enable=goimports --enable=gosimple --enable=misspell --enable=unparam --enable=unused --enable=staticcheck --deadline=600s ./...
+  - go test -race -cover -v ./...
