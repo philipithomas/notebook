@@ -1,4 +1,5 @@
 /*
+Calculates prime numbers using a Sieve of Eratosthenes
 21 November 2014
 
 Problem:

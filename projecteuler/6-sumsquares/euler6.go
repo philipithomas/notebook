@@ -1,4 +1,5 @@
 /*
+Finds sums of squares
 13 November 2014
 
 Problem:

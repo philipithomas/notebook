@@ -1,4 +1,5 @@
 /*
+Finds prime numbers
 14 November 2014
 
 Problem:

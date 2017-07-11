@@ -1,4 +1,5 @@
 /*
+Substring matching
 15 November 2014
 
 Problem:

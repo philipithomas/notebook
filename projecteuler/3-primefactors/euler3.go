@@ -1,4 +1,5 @@
 /*
+Calculates prime factorization
 10 November 2014
 
 Problem:

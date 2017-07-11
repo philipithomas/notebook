@@ -1,4 +1,5 @@
 /*
+Calculating fibonacci sequences
 9 November 2014
 
 Problem:

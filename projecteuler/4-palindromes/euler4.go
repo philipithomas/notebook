@@ -1,4 +1,5 @@
 /*
+Finds numeric palindromes
 11 November 2014
 
 Problem:

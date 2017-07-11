@@ -1,4 +1,5 @@
 /*
+Finds pythagorean triplets
 20 November 2014
 
 Problem:

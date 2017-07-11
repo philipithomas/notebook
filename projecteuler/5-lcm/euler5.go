@@ -1,4 +1,5 @@
 /*
+Finds least common multiples
 12 November 2014
 
 Problem:
