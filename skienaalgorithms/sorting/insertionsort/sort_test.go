@@ -7,7 +7,7 @@ import (
 )
 
 func TestSort(t *testing.T) {
-	for _, tt := range util.StringSliceSortTests {
+	for _, tt := range util.RuneSliceSortTests {
 		Sort(tt.Shuffled)
 		if !util.Equal(tt.Shuffled, tt.Sorted) {
 			t.Errorf("Sorting incorrect.\nActual: %v\nExpected: %v.", tt.Shuffled, tt.Sorted)

@@ -1,7 +1,7 @@
 package util
 
-// Equal checks whether string slices are equal
-func Equal(a, b []string) bool {
+// Equal checks whether rune slices are equal
+func Equal(a, b []rune) bool {
 	if a == nil && b == nil {
 		return true
 	}

@@ -3,17 +3,17 @@ package util
 import "testing"
 
 var equalsTests = []struct {
-	a        []string
-	b        []string
+	a        []rune
+	b        []rune
 	expected bool
 }{
 	{a: nil, b: nil, expected: true},
-	{a: []string{}, b: nil, expected: false},
-	{a: []string{"a", "b"}, b: []string{"a", "b"}, expected: true},
-	{a: []string{"a", "b"}, b: []string{"a", "b", "c"}, expected: false},
+	{a: []rune{}, b: nil, expected: false},
+	{a: []rune{'a', 'b'}, b: []rune{'a', 'b'}, expected: true},
+	{a: []rune{'a', 'b'}, b: []rune{'a', 'b', 'c'}, expected: false},
 }
 
-func TestEquals(t *testing.T) {
+func TestEqual(t *testing.T) {
 	for _, tt := range equalsTests {
 		if Equal(tt.a, tt.b) != tt.expected {
 			if tt.expected {
