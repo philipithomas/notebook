@@ -5,8 +5,10 @@ go:
   - 1.8
   - master
 before_install:
+  - go get -u golang.org/x/tools/cmd/cover
+  - go get -u github.com/mattn/goveralls
   - go get -u github.com/alecthomas/gometalinter
   - gometalinter --install
 script:
   - gometalinter --enable=gofmt --enable=goimports --enable=gosimple --enable=misspell --enable=unparam --enable=unused --enable=staticcheck --deadline=600s ./...
-  - go test -race -cover -v ./...
+  - go test -v -covermode=count -coverprofile=coverage.out $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN ./...
