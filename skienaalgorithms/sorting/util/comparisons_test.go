@@ -10,6 +10,7 @@ var equalsTests = []struct {
 	{a: nil, b: nil, expected: true},
 	{a: []rune{}, b: nil, expected: false},
 	{a: []rune{'a', 'b'}, b: []rune{'a', 'b'}, expected: true},
+	{a: []rune{'a', 'b', 'c'}, b: []rune{'a', 'b', 'd'}, expected: false},
 	{a: []rune{'a', 'b'}, b: []rune{'a', 'b', 'c'}, expected: false},
 }
 
