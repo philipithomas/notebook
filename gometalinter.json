@@ -1,0 +1,28 @@
+{
+  "Enable": [
+      "gofmt",
+      "goimports",
+      "golint",
+      "structcheck",
+      "misspell",
+      "unused",
+      "vet",
+      "unparam",
+      "gotype",
+      "deadcode",
+      "varcheck",
+      "ineffassign",
+      "interfacer",
+      "unconvert",
+      "goconst",
+      "gas",
+      "gosimple",
+      "unparam",
+      "unused",
+      "staticcheck",
+      "errcheck",
+      "gocyclo",
+      "vetshadow",
+      "aligncheck"
+  ]
+}
