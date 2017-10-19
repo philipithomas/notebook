@@ -19,6 +19,10 @@
     "errcheck",
     "gocyclo",
     "vetshadow",
-    "megacheck"
+    "megacheck",
+    "maligned",
+    "testify",
+    "unused",
+    "staticcheck"
   ]
 }
