@@ -8,8 +8,6 @@ const (
 	solution = 4613732
 )
 
-// TODO - how do you test a channel?
-
 func TestCalculate(t *testing.T) {
 	result := calculate()
 	if result != solution {

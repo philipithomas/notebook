@@ -1,5 +1,5 @@
 /*
-Calculates prime factorization
+Package primefactorization calculates the largest prime factor of an integer
 10 November 2014
 
 Problem:
@@ -18,18 +18,14 @@ was prime, and the project gave an example input and solution.
 
 If I were to improve this solution, I would start by build a better isPrime function.
 */
-package main
+package primefactorization
 
 import (
-	"fmt"
 	"math"
 )
 
-const (
-	x = 600851475143
-)
-
-func isPrime(n int) bool {
+// IsPrime returns whether the given positive integer is prime
+func IsPrime(n int) bool {
 	for i := 2; i < n; i++ {
 		// include i!=n for formality to pass test for 2
 		if n%i == 0 && i != n {
@@ -39,24 +35,21 @@ func isPrime(n int) bool {
 	return true
 }
 
-func calculate(x int) int {
+// LargestPrimeFactor returns the largest integral prime factor of a number
+func LargestPrimeFactor(x int) int {
 	// Start with largest possible prime number
 	// "int" will take the floor of the returned float
 	n := int(math.Sqrt(float64(x)))
+
 	for {
 		// is factor?
 		if x%n == 0 {
-			// is prime?
-			if isPrime(n) {
+
+			if IsPrime(n) {
 				// Max prime factor!
 				return n
 			}
 		}
 		n--
 	}
-}
-
-func main() {
-	max := calculate(x)
-	fmt.Printf("The maximum number prime factor of %d is %d\n", x, max)
 }
