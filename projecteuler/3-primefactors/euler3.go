@@ -24,10 +24,6 @@ import (
 	"math"
 )
 
-const (
-	x = 600851475143
-)
-
 // IsPrime returns whether the given positive integer is prime
 func IsPrime(n int) bool {
 	for i := 2; i < n; i++ {
