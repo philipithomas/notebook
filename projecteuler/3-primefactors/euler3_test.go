@@ -1,41 +1,31 @@
-package main
+package primefactorization
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestProvidedExample(t *testing.T) {
-	// Check that we get the right answer for Project Euler's example
-	result := calculate(13195)
-	solution := 29
-	if result != solution {
-		t.Errorf("Solution was incorrect. Correct: %d. Calculated: %d.", result, solution)
-	}
-}
+func TestIsPrime(t *testing.T) {
+	assert := assert.New(t)
 
-func TestCorrectEulerAnswer(t *testing.T) {
-	result := calculate(600851475143)
-	solution := 6857
-	if result != solution {
-		t.Errorf("Solution was incorrect. Correct: %d. Calculated: %d.", result, solution)
-	}
-}
-
-func TestPrimeNumbers(t *testing.T) {
-	primes := [...]int{2, 3, 5, 7, 11, 149}
+	primes := [...]int{2, 3, 5, 7, 11, 13, 149}
 	for _, n := range primes {
-		if !isPrime(n) {
-			t.Errorf("Number %d incorrectly classified as composite", n)
-		}
+		assert.True(IsPrime(n), "%d should be prime", n)
 	}
 
+	composites := [...]int{4, 6, 8, 9, 10, 200, 1024}
+	for _, n := range composites {
+		assert.False(IsPrime(n), "%d should not be prime", n)
+	}
 }
 
-func TestCompositeNumbersNotPrime(t *testing.T) {
-	composites := [...]int{4, 6, 8, 9, 200, 1024}
-	for _, n := range composites {
-		if isPrime(n) {
-			t.Errorf("Number %d incorrectly classified as prime", n)
-		}
-	}
+func TestLargestPrimeFactor(t *testing.T) {
+	assert := assert.New(t)
+
+	// Check that we get the right answer for Project Euler's example
+	assert.Equal(LargestPrimeFactor(13195), 29, "The largest prime factor of 13195 is 29")
+
+	// Check our calculated answer to the problem
+	assert.Equal(LargestPrimeFactor(600851475143), 6857, "The largest prime factor of 600851475143 is 6857")
 }
