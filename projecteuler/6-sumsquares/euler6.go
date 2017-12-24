@@ -27,6 +27,8 @@ approach.
 */
 package sumsquaredifference
 
+import "sync"
+
 func sumOfSquares(sumChan chan int, max int) {
 	var i int
 	for i = 1; i <= max; i++ {
@@ -54,24 +56,31 @@ func SquareMinusSum(max int) (squareMinusSum int) {
 	go squareOfSums(squareChan, max)
 	go sumOfSquares(sumChan, max)
 
-	var sumDone, squareDone bool
-	for {
-		if sumDone && squareDone {
-			return
-		}
-		select {
-		case receive, ok := <-sumChan:
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	go func() {
+		for {
+			data, ok := <-sumChan
 			if !ok {
-				sumDone = true
-			} else {
-				squareMinusSum -= receive
+				wg.Done()
+				return
 			}
-		case receive, ok := <-squareChan:
-			if !ok {
-				squareDone = true
-			} else {
-				squareMinusSum += receive
-			}
+			squareMinusSum -= data
 		}
-	}
+	}()
+
+	go func() {
+		for {
+			data, ok := <-squareChan
+			if !ok {
+				wg.Done()
+				return
+			}
+			squareMinusSum += data
+		}
+	}()
+
+	wg.Wait()
+	return
 }

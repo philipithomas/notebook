@@ -128,26 +128,8 @@ const (
 	digits = 10 // how long final answer should be
 )
 
-func sumMod(sum *big.Int, num string) {
-	add := big.NewInt(0)
-	_, ok := add.SetString(num, base)
-	if !ok {
-		panic("Unable to parse string")
-	}
-	sum.Add(sum, add)
-}
-
-func digitSum(numbers []string) string {
-	sum := big.NewInt(0)
-	for _, num := range numbers {
-		sumMod(sum, num)
-	}
-	return sum.String()[:digits]
-}
-
-// Calculate returns the first ten digits of the sum
-func Calculate() string {
-	numbers := []string{
+var (
+	data = []string{
 		"37107287533902102798797998220837590246510135740250",
 		"46376937677490009712648124896970078050417018260538",
 		"74324986199524741059474233309513058123726617309629",
@@ -249,5 +231,27 @@ func Calculate() string {
 		"20849603980134001723930671666823555245252804609722",
 		"53503534226472524250874054075591789781264330331690",
 	}
-	return digitSum(numbers)
+)
+
+func sumMod(sum *big.Int, num string) {
+	add := big.NewInt(0)
+	_, ok := add.SetString(num, base)
+	if !ok {
+		panic("Unable to parse string")
+	}
+	sum.Add(sum, add)
+}
+
+func digitSum(numbers []string) string {
+	sum := big.NewInt(0)
+	for _, num := range numbers {
+		sumMod(sum, num)
+	}
+	return sum.String()[:digits]
+}
+
+// Calculate returns the first ten digits of the sum
+func Calculate() string {
+
+	return digitSum(data)
 }
