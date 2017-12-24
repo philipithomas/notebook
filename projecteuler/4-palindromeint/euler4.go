@@ -1,5 +1,6 @@
 /*
-Package palindromeint returns the largest palindrome integer in a range.
+Package palindromeint returns the largest palindrome integer of the product of
+two numbers in a range.
 11 November 2014
 
 Problem:
