@@ -1,16 +1,21 @@
-package main
+package fibseq
 
 import (
 	"testing"
-)
 
-const (
-	solution = 4613732
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCalculate(t *testing.T) {
-	result := calculate()
-	if result != solution {
-		t.Errorf("Solution was incorrect. Correct: %d. Calculated: %d.", result, solution)
+	var tests = []struct {
+		lim      int
+		expected int
+	}{
+		{4e6, 4613732},
+	}
+
+	for _, tt := range tests {
+		assert.Equal(t, Calculate(tt.lim), tt.expected,
+			"the sum of even fib numbers below %d is expected to be %d", tt.lim, tt.expected)
 	}
 }

@@ -1,5 +1,5 @@
 /*
-Calculating fibonacci sequences
+Package fibseq calculates the sum of fibonacci sequences' even numbers
 9 November 2014
 
 Problem:
@@ -14,17 +14,9 @@ This allowed me to separate the logic for creating Fibonacci numbers and the log
 One question this raised is how to conduct testing of channels. I have been creating basic unit tests for Project Euler scripts
 after I have a confirmed correct answer. This allows me to refactor after finding the correct answer without worry.
 */
-package main
+package fibseq
 
-import (
-	"fmt"
-)
-
-const (
-	limit = 4e6
-)
-
-func emitFib(fibChan chan int) {
+func emitFib(fibChan chan int, limit int) {
 
 	// Problem says start with [1, 2]. I prefer the more classical [0, 1]
 	current := 1
@@ -51,20 +43,17 @@ func processFib(fibChan chan int) (sum int) {
 			return
 		}
 
+		// only sum even numbers
 		if val%2 == 0 {
 			sum += val
 		}
 	}
 }
 
-func calculate() int {
+// Calculate returns the sum of even Fibonacci numbers below a limit
+func Calculate(limit int) int {
 	fibChan := make(chan int)
-	go emitFib(fibChan)
+	go emitFib(fibChan, limit)
 
 	return processFib(fibChan)
-}
-
-func main() {
-	sum := calculate()
-	fmt.Printf("Sum of even fibonnaci numbers is %d.\n", sum)
 }
