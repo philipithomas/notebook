@@ -1,5 +1,5 @@
 /*
-Finds least common multiples
+Package lcm finds least common multiples
 12 November 2014
 
 Problem:
@@ -18,42 +18,42 @@ to 20.
 This function uses the greatest common divisor (gcd), which is
 computed recursively using Euclid’s algorithm.
 */
-package main
+package lcm
 
-import (
-	"fmt"
-)
-
-const (
-	eulerMax = 20
-)
-
-// Greatest common divisor
-func gcd(i, j int) int {
+// GreatestCommonDivisor returns the greatest common divisor between two
+// positive integers
+func GreatestCommonDivisor(i, j int) int {
 	// Euclid's algorithm
 	k := i % j
 	if k == 0 {
 		return j
 	}
-	return gcd(j, k)
+	return GreatestCommonDivisor(j, k)
 }
 
-// Least common multiple
-func lcm(i, j int) int {
+// LeastCommonMultiple returns the least common multiple of two positive
+// integers
+func LeastCommonMultiple(i, j int) int {
 	// from LCM wikipedia page
-	return i * j / gcd(i, j)
+	return i * j / GreatestCommonDivisor(i, j)
 }
 
-func calculate(max int) (lcmOut int) {
-	// What is the LCM of all integers between 1 and max, inclusive?
-	lcmOut = 1
-	for i := 1; i <= max; i++ {
-		lcmOut = lcm(lcmOut, i)
+// LeastCommonMultipleRange returns the least common multiple of all
+// positive integers in the input factors
+func LeastCommonMultipleRange(factors []int) (lcm int) {
+	lcm = 1
+	for _, i := range factors {
+		lcm = LeastCommonMultiple(lcm, i)
 	}
 	return
 }
 
-func main() {
-	lcmOut := calculate(eulerMax)
-	fmt.Printf("The LCM of numbers from 1 to %d is %d\n", eulerMax, lcmOut)
+// Range returns an array of integers from min to max, inclusive to inclusive,
+// in steps of 1
+func Range(min, max int) []int {
+	a := make([]int, max-min+1)
+	for i := range a {
+		a[i] = min + i
+	}
+	return a
 }
