@@ -47,10 +47,8 @@ func LargestPalindromeFromProductOfNumbers(floor, ceil int) (max int, err error)
 	for i := floor; i <= ceil; i++ {
 		for j := floor; j <= ceil; j++ {
 			test := i * j
-			if IsPalindrome(test) {
-				if max < test {
-					max = test
-				}
+			if IsPalindrome(test) && max < test {
+				max = test
 			}
 		}
 	}
