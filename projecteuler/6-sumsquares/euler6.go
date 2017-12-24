@@ -1,5 +1,5 @@
 /*
-Package sumsquares findes the sums of squares and square of sums
+Package sumsquaredifference findes the sums of squares minus the square of sums
 13 November 2014
 
 Problem:
@@ -21,21 +21,23 @@ This operation is quite common in statistics as a variance calculation.
 I chose to use go routines to calculate the sum and squares concurrently.
 Only one value ends up being transmitted on squareChan before it closes,
 so it may not be a traditional use of a channel, but it does allow executing
-the calculation without blocking the other calculation.
+the calculation without blocking the other calculation. In reality, I think
+it's more of a fun demonstration of channels rather than the most efficient
+approach.
 */
-package sumsquares
+package sumsquaredifference
 
-func sumOfSquares(sumChan chan int64, max int64) {
-	var i int64
+func sumOfSquares(sumChan chan int, max int) {
+	var i int
 	for i = 1; i <= max; i++ {
 		sumChan <- i * i
 	}
 	close(sumChan)
 }
 
-func squareOfSums(squareChan chan int64, max int64) {
-	var i int64
-	sum := int64(0)
+func squareOfSums(squareChan chan int, max int) {
+	var i int
+	sum := int(0)
 	for i = 1; i <= max; i++ {
 		sum += i
 	}
@@ -43,9 +45,11 @@ func squareOfSums(squareChan chan int64, max int64) {
 	close(squareChan)
 }
 
-func squareMinusSum(max int64) (squareMinusSum int64) {
-	sumChan := make(chan int64)
-	squareChan := make(chan int64)
+// SquareMinusSum returns the sum of squares minus the squre of sums of the
+// range of 1 to max
+func SquareMinusSum(max int) (squareMinusSum int) {
+	sumChan := make(chan int)
+	squareChan := make(chan int)
 
 	go squareOfSums(squareChan, max)
 	go sumOfSquares(sumChan, max)
