@@ -1,5 +1,5 @@
 /*
-Package primesum calcualtes prime numbers using a Sieve of Eratosthenes below
+Package primesieve calcualtes prime numbers using a Sieve of Eratosthenes below
 a limit, and returns their sum.
 21 November 2014
 
