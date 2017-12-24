@@ -1,21 +1,15 @@
-package main
+package sumsquaredifference
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestEulerExample(t *testing.T) {
-	out := squareMinusSum(int64(10))
-	expected := int64(2640)
-	if out != expected {
-		t.Errorf("Example incorrect. Correct: %d. Calculated: %d.", out, expected)
-	}
-}
+func TestSquareMinusSum(t *testing.T) {
+	// Provided example
+	assert.Equal(t, SquareMinusSum(10), 2640)
 
-func TestEulerSolution(t *testing.T) {
-	out := squareMinusSum(eulerMax)
-	expected := int64(25164150)
-	if out != expected {
-		t.Errorf("Example incorrect. Correct: %d. Calculated: %d.", out, expected)
-	}
+	// Euler problem
+	assert.Equal(t, SquareMinusSum(100), 25164150)
 }
