@@ -43,12 +43,10 @@ func LargestPrimeFactor(x int) int {
 
 	for {
 		// is factor?
-		if x%n == 0 {
+		if x%n == 0 && IsPrime(n) {
 
-			if IsPrime(n) {
-				// Max prime factor!
-				return n
-			}
+			// Max prime factor!
+			return n
 		}
 		n--
 	}
