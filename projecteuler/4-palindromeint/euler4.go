@@ -1,5 +1,5 @@
 /*
-Finds numeric palindromes
+Package palindromeint returns the largest palindrome integer in a range.
 11 November 2014
 
 Problem:
@@ -15,20 +15,20 @@ on the integral digits more straightforward. Thus, the function compares the fir
 to the last digit, then the second digit to the second-last digit, etc using the byte
 slice data structure until meeting in the middle of the slice.
 */
-package main
+package palindromeint
 
 import (
 	"errors"
-	"fmt"
 	"strconv"
 )
 
 var (
-	lower = 100
-	upper = 999
+	// ErrNoPalindromesInRange is returned when no palindromes exist in the provided range
+	ErrNoPalindromesInRange = errors.New("no palindromes in the provided range")
 )
 
-func isPalindrome(n int) bool {
+// IsPalindrome returns whether an integer is the same forwards and backwards.
+func IsPalindrome(n int) bool {
 	// Convert integer to byte array (via string)
 	str := []byte(strconv.Itoa(n))
 	for i := 0; i < (len(str) / 2); i++ {
@@ -39,11 +39,14 @@ func isPalindrome(n int) bool {
 	return true
 }
 
-func calculate() (max int, err error) {
-	for i := lower; i <= upper; i++ {
-		for j := lower; j <= upper; j++ {
+// LargestPalindromeFromProductOfNumbers returns the largest palindrome integer
+// in a range of two multiplied integers, with the bounds of each
+// integer as floor to ceil, inclusive to inclusive, of the inputs
+func LargestPalindromeFromProductOfNumbers(floor, ceil int) (max int, err error) {
+	for i := floor; i <= ceil; i++ {
+		for j := floor; j <= ceil; j++ {
 			test := i * j
-			if isPalindrome(test) {
+			if IsPalindrome(test) {
 				if max < test {
 					max = test
 				}
@@ -51,15 +54,7 @@ func calculate() (max int, err error) {
 		}
 	}
 	if max == 0 {
-		err = errors.New("No value found")
+		err = ErrNoPalindromesInRange
 	}
 	return
-}
-
-func main() {
-	max, err := calculate()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("The max palindrome formed by the multplication of two three-digit numbers is %d\n", max)
 }
