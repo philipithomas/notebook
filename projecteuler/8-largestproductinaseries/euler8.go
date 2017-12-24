@@ -45,8 +45,6 @@ haystack of all zeros).
 */
 package largestproductinaseries
 
-// TODO - refactor this package
-
 import (
 	"strconv"
 )
