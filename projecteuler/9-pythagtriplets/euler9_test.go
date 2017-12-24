@@ -1,37 +1,44 @@
-package main
+package pythagoreantriplets
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestEulerExample(t *testing.T) {
-	sum := 3 + 4 + 5
-	out, err := calculatePythagTripletSum(sum)
-	expected := 3 * 4 * 5
-	if err != nil {
-		t.Error("Unexpected error")
+func TestCalculateSolutions(t *testing.T) {
+	var tests = []struct {
+		sum             int
+		expectedProduct int
+	}{
+		{
+			sum:             3 + 4 + 5,
+			expectedProduct: 3 * 4 * 5,
+		},
+		{
+			sum:             5 + 12 + 13,
+			expectedProduct: 5 * 12 * 13,
+		},
+		{
+			// Euler challenge
+			sum:             1000,
+			expectedProduct: 31875000,
+		},
 	}
-	if out != expected {
-		t.Errorf("Incorrect answer")
+
+	for _, tt := range tests {
+		res, err := Calculate(tt.sum)
+		assert.NoError(t, err, "no error is expected")
+		assert.Equal(t, res, tt.expectedProduct,
+			"digits that sum to %d have an expected product of %d", tt.sum, tt.expectedProduct)
 	}
 }
 
-func TestTripletExample(t *testing.T) {
-	sum := 5 + 12 + 13
-	out, err := calculatePythagTripletSum(sum)
-	expected := 5 * 12 * 13
-	if err != nil {
-		t.Error("Unexpected error")
-	}
-	if out != expected {
-		t.Errorf("Incorrect answer")
-	}
-}
-
-func TestWrongSumThrowsError(t *testing.T) {
-	sum := 5 + 12 + 13 + 1
-	_, err := calculatePythagTripletSum(sum)
-	if err == nil {
-		t.Errorf("Error not thrown for incorrect sum %d", sum)
+func TestNoSolutionReturnsErr(t *testing.T) {
+	noSolutionSums := []int{1, 29, 999}
+	for _, n := range noSolutionSums {
+		_, err := Calculate(n)
+		assert.Equal(t, err, ErrInfeasible,
+			"no pythagorean triplet expected that sums to %d", n)
 	}
 }
