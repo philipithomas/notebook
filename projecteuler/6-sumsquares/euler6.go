@@ -1,14 +1,16 @@
 /*
-Finds sums of squares
+Package sumsquares findes the sums of squares and square of sums
 13 November 2014
 
 Problem:
 The sum of the squares of the first ten natural numbers is,
 
 1^2 + 2^2 + ... + 10^2 = 385
+
 The square of the sum of the first ten natural numbers is,
 
 (1 + 2 + ... + 10)^2 = 55^2 = 3025
+
 Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 − 385 = 2640.
 
 Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
@@ -21,15 +23,7 @@ Only one value ends up being transmitted on squareChan before it closes,
 so it may not be a traditional use of a channel, but it does allow executing
 the calculation without blocking the other calculation.
 */
-package main
-
-import (
-	"fmt"
-)
-
-const (
-	eulerMax = 100
-)
+package sumsquares
 
 func sumOfSquares(sumChan chan int64, max int64) {
 	var i int64
@@ -76,9 +70,4 @@ func squareMinusSum(max int64) (squareMinusSum int64) {
 			}
 		}
 	}
-}
-
-func main() {
-	answer := squareMinusSum(eulerMax)
-	fmt.Printf("The square of the sums minus the sums of the squares of 1 to %d is %d\n", eulerMax, answer)
 }

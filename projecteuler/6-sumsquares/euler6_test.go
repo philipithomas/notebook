@@ -1,4 +1,4 @@
-package main
+package sumsquares
 
 import (
 	"testing"
