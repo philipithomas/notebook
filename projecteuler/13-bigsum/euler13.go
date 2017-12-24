@@ -1,5 +1,5 @@
 /*
-Sums big numbers
+Package bigsum sums big numbers
 29 December 2014
 
 Problem:
@@ -117,10 +117,9 @@ Thus, essentially this library allows brute forcing this problem by creating an
 arbitrarily-large integer. The correct 10 digits are returned as a simple substring
 of the big integer.
 */
-package main
+package bigsum
 
 import (
-	"fmt"
 	"math/big"
 )
 
@@ -146,7 +145,8 @@ func digitSum(numbers []string) string {
 	return sum.String()[:digits]
 }
 
-func calculate() string {
+// Calculate returns the first ten digits of the sum
+func Calculate() string {
 	numbers := []string{
 		"37107287533902102798797998220837590246510135740250",
 		"46376937677490009712648124896970078050417018260538",
@@ -250,9 +250,4 @@ func calculate() string {
 		"53503534226472524250874054075591789781264330331690",
 	}
 	return digitSum(numbers)
-}
-
-func main() {
-	sum := calculate()
-	fmt.Printf("The first ten digits of the sum of the numbers is %s.\n", sum)
 }
