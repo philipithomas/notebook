@@ -44,7 +44,6 @@ func LargestPrimeFactor(x int) int {
 	for {
 		// is factor?
 		if x%n == 0 && IsPrime(n) {
-
 			// Max prime factor!
 			return n
 		}

@@ -59,19 +59,16 @@ func SquareMinusSum(max int) (squareMinusSum int) {
 		if sumDone && squareDone {
 			return
 		}
+
 		select {
 		case receive, ok := <-sumChan:
-			if !ok {
-				sumDone = true
-			} else {
-				squareMinusSum -= receive
-			}
+			sumDone = !ok
+			squareMinusSum -= receive
 		case receive, ok := <-squareChan:
-			if !ok {
-				squareDone = true
-			} else {
-				squareMinusSum += receive
-			}
+			squareDone = !ok
+			squareMinusSum += receive
+
+		default:
 		}
 	}
 }
