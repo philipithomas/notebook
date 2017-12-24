@@ -7,8 +7,6 @@ import (
 )
 
 func TestRange(t *testing.T) {
-	assert := assert.New(t)
-
 	var tests = []struct {
 		min      int
 		max      int
@@ -19,13 +17,11 @@ func TestRange(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		assert.Equal(Range(tt.min, tt.max), tt.expected,
+		assert.Equal(t, Range(tt.min, tt.max), tt.expected,
 			"the range from %d to %d is expected to be %v", tt.min, tt.max, tt.expected)
 	}
 }
 func TestGreatestCommonDivisor(t *testing.T) {
-	assert := assert.New(t)
-
 	var tests = []struct {
 		a        int
 		b        int
@@ -38,16 +34,14 @@ func TestGreatestCommonDivisor(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		assert.Equal(GreatestCommonDivisor(tt.a, tt.b), tt.expected,
+		assert.Equal(t, GreatestCommonDivisor(tt.a, tt.b), tt.expected,
 			"the greatest common divisor of %d and %d should be %d", tt.a, tt.b, tt.expected)
-		assert.Equal(GreatestCommonDivisor(tt.a, tt.b), GreatestCommonDivisor(tt.b, tt.a),
+		assert.Equal(t, GreatestCommonDivisor(tt.a, tt.b), GreatestCommonDivisor(tt.b, tt.a),
 			"the order of arguments in GreatestCommonDivisor should not matter")
 	}
 }
 
 func TestLeastCommonMultiple(t *testing.T) {
-	assert := assert.New(t)
-
 	var tests = []struct {
 		a        int
 		b        int
@@ -60,22 +54,20 @@ func TestLeastCommonMultiple(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		assert.Equal(LeastCommonMultiple(tt.a, tt.b), tt.expected,
+		assert.Equal(t, LeastCommonMultiple(tt.a, tt.b), tt.expected,
 			"the least common multiple of %d and %d should be %d", tt.a, tt.b, tt.expected)
-		assert.Equal(LeastCommonMultiple(tt.a, tt.b), LeastCommonMultiple(tt.b, tt.a),
+		assert.Equal(t, LeastCommonMultiple(tt.a, tt.b), LeastCommonMultiple(tt.b, tt.a),
 			"the order of arguments in LeastCommonMultiple should not matter")
 	}
 
 }
 
 func TestLeastCommonMultipleRange(t *testing.T) {
-	assert := assert.New(t)
-
-	// Provided euler exmaple
-	assert.Equal(LeastCommonMultipleRange(Range(1, 10)), 2520,
+	// Provided euler examplep
+	assert.Equal(t, LeastCommonMultipleRange(Range(1, 10)), 2520,
 		"the least common multiple of the numbers from 1 to 10 should be 2520")
 
 	// Euler challenge
-	assert.Equal(LeastCommonMultipleRange(Range(1, 20)), 232792560,
+	assert.Equal(t, LeastCommonMultipleRange(Range(1, 20)), 232792560,
 		"the least common multiple of the numbers from 1 to 20 should be 232792560")
 }

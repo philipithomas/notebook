@@ -28,12 +28,14 @@ programmatic solution.
 */
 package main
 
+// TODO - refactor package
+
 import (
 	"fmt"
 	"math"
 )
 
-func calculatePythagTripletSum(sum int) (int, error) {
+func calculatePythagTripletSum(sum int) (int, error) { // nolint
 	/*
 	   See blog post for derivation - but basically, calculate required `b` given
 	   an `a`, then see if a is an integer and if it matches the parameters.

@@ -23,6 +23,8 @@ the calculation without blocking the other calculation.
 */
 package main
 
+// TODO - refactor this package
+
 import (
 	"fmt"
 )
@@ -49,7 +51,7 @@ func squareOfSums(squareChan chan int64, max int64) {
 	close(squareChan)
 }
 
-func squareMinusSum(max int64) (squareMinusSum int64) {
+func squareMinusSum(max int64) (squareMinusSum int64) { // nolint
 	sumChan := make(chan int64)
 	squareChan := make(chan int64)
 
