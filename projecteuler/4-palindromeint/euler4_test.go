@@ -9,7 +9,7 @@ import (
 func TestLargestPalindromeFromProductOfNumbers(t *testing.T) {
 	assert := assert.New(t)
 
-	// Instead of testing the "two digit" or "three digit" products explicitely, we
+	// Instead of testing the "two digit" or "three digit" products explicitly, we
 	// test ranges
 
 	// Euler provided example: 2-digit
