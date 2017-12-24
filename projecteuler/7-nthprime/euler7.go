@@ -1,5 +1,5 @@
 /*
-Finds prime numbers
+Package nthprime finds the nth prime number
 14 November 2014
 
 Problem:
@@ -22,21 +22,18 @@ In fact, finding 10,001 primes using this script on my Macbook Air took 541ms.
 That’s fast! My method for identifying a prime number is efficient, but
 perhaps there may be a better way to search for prime number candidates.
 */
-package main
+package nthprime
 
-import (
-	"fmt"
-)
-
-var (
-	eulerPrime = 10001
-)
-
-func primeNum(n int) int {
+// FindNthPrime returns the Nth prime number
+func FindNthPrime(n int) int {
 	// Start with known 2 as prime
 	i := 2
 	primes := []int{i}
 	for {
+		if len(primes) == n {
+			return i
+		}
+
 		i++
 		isPrime := true
 		for _, prime := range primes {
@@ -48,14 +45,6 @@ func primeNum(n int) int {
 
 		if isPrime {
 			primes = append(primes, i)
-			if len(primes) == n {
-				return i
-			}
 		}
 	}
-}
-
-func main() {
-	answer := primeNum(eulerPrime)
-	fmt.Printf("Prime number %d is %d\n", eulerPrime, answer)
 }
