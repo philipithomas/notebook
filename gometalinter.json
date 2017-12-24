@@ -15,13 +15,13 @@
     "unconvert",
     "goconst",
     "gas",
-    "unparam",
     "errcheck",
     "gocyclo",
     "vetshadow",
     "megacheck",
     "testify",
-    "unused",
-    "staticcheck"
+    "maligned",
+    "dupl",
+    "safesql"
   ]
 }

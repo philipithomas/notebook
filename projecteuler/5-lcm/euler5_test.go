@@ -21,12 +21,16 @@ func TestRange(t *testing.T) {
 			"the range from %d to %d is expected to be %v", tt.min, tt.max, tt.expected)
 	}
 }
+
+type gcdTest struct {
+	a        int
+	b        int
+	expected int
+}
+
+// nolint: dupl
 func TestGreatestCommonDivisor(t *testing.T) {
-	var tests = []struct {
-		a        int
-		b        int
-		expected int
-	}{
+	var tests = []gcdTest{
 		{21, 6, 3},
 		{6, 21, 3},
 		{7, 11, 1},
@@ -41,12 +45,15 @@ func TestGreatestCommonDivisor(t *testing.T) {
 	}
 }
 
+type lcmTest struct {
+	a        int
+	b        int
+	expected int
+}
+
+// nolint: dupl
 func TestLeastCommonMultiple(t *testing.T) {
-	var tests = []struct {
-		a        int
-		b        int
-		expected int
-	}{
+	var tests = []lcmTest{
 		{1, 1, 1},
 		{4, 6, 12},
 		{6, 4, 12},
