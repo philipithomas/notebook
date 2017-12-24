@@ -1,5 +1,5 @@
 /*
-Finds least common multiples
+Package lcm finds least common multiples
 12 November 2014
 
 Problem:
