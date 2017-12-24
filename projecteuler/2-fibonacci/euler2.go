@@ -1,5 +1,5 @@
 /*
-Package fibseq calculates the sum of fibonacci sequences' even numbes
+Package fibseq calculates the sum of fibonacci sequences' even numbers
 9 November 2014
 
 Problem:
