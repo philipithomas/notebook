@@ -16,10 +16,6 @@ after I have a confirmed correct answer. This allows me to refactor after findin
 */
 package fibseq
 
-const (
-	limit = 4e6
-)
-
 func emitFib(fibChan chan int, limit int) {
 
 	// Problem says start with [1, 2]. I prefer the more classical [0, 1]
