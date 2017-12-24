@@ -14,7 +14,7 @@ before_install:
   - go get -u github.com/alecthomas/gometalinter
   - gometalinter --install
 script:
-  - gometalinter --config=gometalinter.json --deadline=600s $(glide novendor)
   - rm -f coverage.*
   - "touch coverage.tmp && echo 'mode: atomic' > coverage.txt && go list ./... | grep -v \"/vendor/\" | xargs -n1 -I{} sh -c 'go test -covermode=atomic -coverprofile=coverage.tmp {} && tail -n +2 coverage.tmp >> coverage.txt' && rm coverage.tmp"
   - $HOME/gopath/bin/goveralls -coverprofile=coverage.txt -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - gometalinter --config=gometalinter.json --deadline=600s $(glide novendor)

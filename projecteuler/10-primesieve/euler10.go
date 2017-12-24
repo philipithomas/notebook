@@ -1,5 +1,6 @@
 /*
-Calculates prime numbers using a Sieve of Eratosthenes
+Package primesieve calcualtes prime numbers using a Sieve of Eratosthenes below
+a limit, and returns their sum.
 21 November 2014
 
 Problem:
@@ -23,17 +24,10 @@ Thus, I rewrote the search algorithm to use a Sieve of Eratosthenes. This algori
 speed surprised me - it calculated the sum of all primes below 2,000,000 in 250ms. The
 primary data structure is a slice of booleans.
 */
-package main
+package primesieve
 
-import (
-	"fmt"
-)
-
-var (
-	eulerLim = 2000000
-)
-
-func primeSum(lim int) (sum int64) {
+// Calculate finds the prime numbers below the limit, exclusive, and returns the sum
+func Calculate(lim int) (sum int64) {
 	// False means prime at output
 	sieve := make([]bool, lim)
 
@@ -63,9 +57,4 @@ func primeSum(lim int) (sum int64) {
 			}
 		}
 	}
-}
-
-func main() {
-	answer := primeSum(eulerLim)
-	fmt.Printf("The sum of prime number below %d is %d\n", eulerLim, answer)
 }
