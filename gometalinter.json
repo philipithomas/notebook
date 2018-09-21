@@ -14,7 +14,7 @@
     "interfacer",
     "unconvert",
     "goconst",
-    "gas",
+    "gosec",
     "errcheck",
     "gocyclo",
     "vetshadow",
