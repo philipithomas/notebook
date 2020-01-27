@@ -1,20 +1,20 @@
 language: go
 sudo: false
 go:
-  - 1.7
-  - 1.8
-  - 1.9
-  - master
+  - 1.12
+  - 1.13
 before_install:
   - go get -v github.com/Masterminds/glide
   - cd $GOPATH/src/github.com/Masterminds/glide && git checkout a88a9a6c4eeaac084a90a0cd2ca8a148cbd3ff63 && go install && cd -
   - glide install
   - go get -u golang.org/x/tools/cmd/cover
   - go get -u github.com/mattn/goveralls
-  - go get -u github.com/alecthomas/gometalinter
-  - gometalinter --install
+  - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.23.1
 script:
   - rm -f coverage.*
-  - "touch coverage.tmp && echo 'mode: atomic' > coverage.txt && go list ./... | grep -v \"/vendor/\" | xargs -n1 -I{} sh -c 'go test -covermode=atomic -coverprofile=coverage.tmp {} && tail -n +2 coverage.tmp >> coverage.txt' && rm coverage.tmp"
+  - 'touch coverage.tmp && echo ''mode: atomic'' > coverage.txt && go list ./... | grep -v "/vendor/" | xargs -n1 -I{} sh -c ''go test -covermode=atomic -coverprofile=coverage.tmp {} && tail -n +2 coverage.tmp >> coverage.txt'' && rm coverage.tmp'
   - $HOME/gopath/bin/goveralls -coverprofile=coverage.txt -service=travis-ci -repotoken $COVERALLS_TOKEN
-  - gometalinter --config=gometalinter.json --deadline=600s $(glide novendor)
+  - golangci-lint run
+cache:
+  directories:
+    - vendor/

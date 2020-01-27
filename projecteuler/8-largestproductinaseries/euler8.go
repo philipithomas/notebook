@@ -65,7 +65,7 @@ func LargestAdjacentProduct(numDigits int) (adjacentSum int64) {
 		for j := 0; j < numDigits; j++ {
 			digit, err := strconv.Atoi(string(needle[j]))
 			panicOnError(err)
-			testSum = testSum * int64(digit)
+			testSum *= int64(digit)
 		}
 		if testSum > adjacentSum {
 			adjacentSum = testSum

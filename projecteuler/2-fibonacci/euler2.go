@@ -17,14 +17,12 @@ after I have a confirmed correct answer. This allows me to refactor after findin
 package fibseq
 
 func emitFib(fibChan chan int, limit int) {
-
 	// Problem says start with [1, 2]. I prefer the more classical [0, 1]
 	current := 1
 	prior := 0
 
 	// Go doesn't have a "while" - only "for"
 	for current <= limit {
-
 		// Emit current
 		fibChan <- current
 
