@@ -1,10 +1,9 @@
 language: go
 sudo: false
 go:
-  - 1.7
-  - 1.8
-  - 1.9
-  - master
+  - 1.12
+  - 1.13
+  - tip
 before_install:
   - go get -v github.com/Masterminds/glide
   - cd $GOPATH/src/github.com/Masterminds/glide && git checkout a88a9a6c4eeaac084a90a0cd2ca8a148cbd3ff63 && go install && cd -
@@ -17,3 +16,7 @@ script:
   - 'touch coverage.tmp && echo ''mode: atomic'' > coverage.txt && go list ./... | grep -v "/vendor/" | xargs -n1 -I{} sh -c ''go test -covermode=atomic -coverprofile=coverage.tmp {} && tail -n +2 coverage.tmp >> coverage.txt'' && rm coverage.tmp'
   - $HOME/gopath/bin/goveralls -coverprofile=coverage.txt -service=travis-ci -repotoken $COVERALLS_TOKEN
   - golangci-lint run
+cache:
+  directories:
+    - vendor/
+    - $HOME/.m2
