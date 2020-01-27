@@ -252,6 +252,5 @@ func digitSum(numbers []string) string {
 
 // Calculate returns the first ten digits of the sum
 func Calculate() string {
-
 	return digitSum(data)
 }

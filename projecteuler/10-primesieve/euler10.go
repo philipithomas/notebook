@@ -39,7 +39,7 @@ func Calculate(lim int) (sum int64) {
 	for {
 		sum += int64(prime)
 		// Get rid of multiples of prime
-		for i := prime; i < lim; i = i + prime {
+		for i := prime; i < lim; i += prime {
 			if i%prime == 0 {
 				sieve[i] = true
 			}

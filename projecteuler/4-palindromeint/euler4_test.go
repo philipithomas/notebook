@@ -21,7 +21,6 @@ func TestLargestPalindromeFromProductOfNumbers(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, ans, 906609,
 		"the largest palindrome in the range of two-digit numbers product should be 9009")
-
 }
 
 func TestInvalidRanges(t *testing.T) {
@@ -50,5 +49,4 @@ func TestIntegralPalindromesArePalindromes(t *testing.T) {
 	for _, n := range notPalindromes {
 		assert.False(t, IsPalindrome(n), "%d should not be a palindrome", n)
 	}
-
 }

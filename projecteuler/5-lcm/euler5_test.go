@@ -66,7 +66,6 @@ func TestLeastCommonMultiple(t *testing.T) {
 		assert.Equal(t, LeastCommonMultiple(tt.a, tt.b), LeastCommonMultiple(tt.b, tt.a),
 			"the order of arguments in LeastCommonMultiple should not matter")
 	}
-
 }
 
 func TestLeastCommonMultipleRange(t *testing.T) {

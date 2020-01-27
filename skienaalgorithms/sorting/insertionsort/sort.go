@@ -7,7 +7,7 @@ func Sort(item []rune) {
 		j := i
 		for (j > 0) && (item[j] < item[j-1]) {
 			item[j], item[j-1] = item[j-1], item[j]
-			j = j - 1
+			j--
 		}
 	}
 }
